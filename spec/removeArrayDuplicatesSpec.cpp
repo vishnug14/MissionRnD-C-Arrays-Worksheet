@@ -9,18 +9,20 @@ namespace spec
 	TEST_CLASS(removeArrayDuplicatesSpec)
 	{
 	public:
-
+		
 		TEST_METHOD(inValidInputCheck)
 		{
-			
+			int Arr[1] = { NULL };
 			int len = removeArrayDuplicates(NULL, 1);
 			Assert::AreEqual(-1, len, L"Invalid input should return -1", LINE_INFO());
 			
+		
 			int Arr1[1] = { 1 };
 			len = removeArrayDuplicates(Arr1, -2);
 			Assert::AreEqual(-1, len, L"Invalid Len input should return -1", LINE_INFO());
-
+			
 		}
+	
 
 		TEST_METHOD(noDuplicates)
 		{

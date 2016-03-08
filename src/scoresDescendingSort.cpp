@@ -14,12 +14,34 @@ NOTES:
 */
 
 #include <stdio.h>
-
+int test_input(int);
 struct student {
 	char name[10];
 	int score;
 };
 
 void * scoresDescendingSort(struct student *students, int len) {
-	return NULL;
+	int i, j, temp,x;
+	x = test_input(len);
+		if (x==1){
+		for (i = 0; i < len; i++){
+			for (j = i + 1; j < len; j++){
+				if ((students[i].score) < (students[j].score)){
+					temp = students[i].score;
+					students[i].score = students[j].score;
+					students[j].score = temp;
+				}
+			}
+		}
+		return students;
+	}
+	else if(x==2){
+		return NULL;
+	}
+}
+int test_input(int n){
+	if (n > 0)
+		return 1;
+	else
+		return 2;
 }

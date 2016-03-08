@@ -15,12 +15,39 @@ NOTES:
 
 #include <iostream>
 #include <malloc.h>
+#include<conio.h>
 
 struct student {
 	char *name;
 	int score;
 };
+void sort_students(struct student *students, int n){
+	int i, j, temp;
+	for (i = 0; i < n; i++){
+		for (j = i + 1; j < n; j++){
+			if (students[i].score < students[j].score){
+				temp = students[i].score;
+				students[i].score = students[j].score;
+				students[j].score = temp;
+			}
+		}
+	}
+}
 
-struct student ** topKStudents(struct student *students, int len, int K) {
-	return NULL;
+struct student ** topKStudents(struct student *students, int len, int k) {
+	int i;
+	if (students!=NULL&&k>0&&len>0){
+		if (k > len){
+			k = len;
+		}
+		sort_students(students, len);
+		struct student **result = (struct student **)malloc(sizeof(struct student)*k);
+		for (i = 0; i<k ; i++){
+				result[i] = &students[i];
+			}
+			return result;
+		}
+	else {
+		return NULL;
+	}
 }

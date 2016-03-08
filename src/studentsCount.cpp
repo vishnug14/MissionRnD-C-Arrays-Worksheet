@@ -14,7 +14,42 @@ NOTES:
 */
 
 #include <stdio.h>
-
-void * studentsCount(int *Arr, int len, int score, int *lessCount, int *moreCount) {
-	return NULL;
+int test_case(int*, int);
+void * studentsCount(int *arr, int len, int score, int *lessCount, int *moreCount) {
+	int i,count=0,count1=0,x;
+	x= test_case(arr, len);
+	if (x == 1){
+		for (i = 0; i < len; i++){
+			if (score <= arr[i]){
+				if (score < arr[i]){
+					*moreCount = len - (count);
+					break;
+				}
+				else if (score == arr[i] && score != arr[i + 1]){
+					*moreCount = len - (count + count1 + 1);
+					break;
+				}
+				else if (score == arr[i]){
+					count1++;
+					*moreCount = len - (count1);
+				}
+			}
+			else{
+				count++;
+			}
+		}
+		*lessCount = count;
+	}
+	else if(x==2){
+		return NULL;
+	}
+}
+int test_case(int *arr, int n){
+	int i;
+	if (n > 0 && arr != NULL){
+		return 1;
+	}
+	else{
+		return 2;
+	}
 }
